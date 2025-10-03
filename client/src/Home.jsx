@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import Create from "./Create";
 import axios from "axios";
 import { BsCircle, BsCheckCircleFill, BsFillTrashFill } from "react-icons/bs";
-import dotenv from 'dotenv'
+import dotenv from "dotenv";
 
 const Home = () => {
   const [todos, setTodos] = useState([]);
-   const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   useEffect(() => {
     axios
@@ -15,10 +15,9 @@ const Home = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  
   const handleEdit = (id) => {
     axios
-      .put(backendUrl +"/update/" + id)
+      .put(backendUrl + "/update/" + id)
       .then((result) => {
         location.reload();
       })
@@ -26,16 +25,19 @@ const Home = () => {
   };
   const handleDelete = (id) => {
     axios
-      .delete(backendUrl +"/delete/" + id)
+      .delete(backendUrl + "/delete/" + id)
       .then((result) => {
         location.reload();
       })
       .catch((err) => console.log(err));
   };
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen w-full">
+    <div className="flex flex-col items-center pt-5 min-h-screen w-full">
       <h2 className="text-2xl font-bold text-center m-3">
-        To Do List of Sujay
+        To Do List of{" "}
+        <span className="bg-gradient-to-r from-orange-500 via-pink-500 to-red-500 text-transparent bg-clip-text">
+          Sujay
+        </span>
       </h2>
 
       <Create />
@@ -64,7 +66,7 @@ const Home = () => {
                 </span>
               </div>
               <button className="text-red-500 hover:text-red-700">
-                <BsFillTrashFill onClick={()=>handleDelete(todo._id)}/>
+                <BsFillTrashFill onClick={() => handleDelete(todo._id)} />
               </button>
             </div>
           ))
