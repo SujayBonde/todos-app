@@ -7,7 +7,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const allowedOrigins=['http://localhost:5173']
+const allowedOrigins=['https://todos-app-by-sujay.vercel.app']
 
 mongoose.connect('mongodb+srv://Su:Sujay2005@firstcluster.qtd4v5s.mongodb.net/todo');
 
